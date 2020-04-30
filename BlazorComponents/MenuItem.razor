@@ -1,0 +1,23 @@
+﻿
+<li @onclick="ItemClicked" @onclick:stopPropagation="true">
+    <a>@Model.Text</a>
+    <ol class="bc hover-menu">
+        @foreach (IMenuItem i in Model.Children)
+        {
+            <MenuItem Model="@i" CustomCallback="@CustomCallback"></MenuItem>
+        }
+    </ol>
+</li>
+
+@code{
+    [Parameter]
+    public IMenuItem Model { get; set; }
+
+    [Parameter]
+    public EventCallback<IMenuItem> CustomCallback { get; set; }
+
+    private void ItemClicked()
+    {
+        CustomCallback.InvokeAsync(Model);
+    }
+}

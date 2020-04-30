@@ -1,0 +1,16 @@
+﻿
+<ol class="bc root-menu">
+    @foreach (IMenuItem i in Items)
+    {
+        <MenuItem Model="@i" CustomCallback="@CustomCallback"></MenuItem>
+    }
+</ol>
+
+@code {
+    [Parameter]
+    public List<IMenuItem> Items { get; set; }
+
+    [Parameter]
+    public EventCallback<IMenuItem> CustomCallback { get; set; }
+
+}

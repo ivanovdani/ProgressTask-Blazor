@@ -1,0 +1,49 @@
+﻿
+
+ol.bc {
+    padding:0;
+    color: white;
+    counter-reset: item;
+}
+
+ol.bc li:before {
+    content: counters(item, ".") " ";
+    counter-increment: item
+}
+
+.bc li {
+    min-width: 100px;
+    position: relative;
+    cursor: pointer;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    background-color: orange;
+}
+.root-menu li {
+    line-height:20px;
+    display: inline-block;
+}
+
+.bc .hover-menu {
+    display: none;
+    position: absolute;
+    top:7px;
+    left:100px;
+}
+.root-menu > li > .hover-menu {
+    top: 30px;
+    left: 0px;
+}
+
+.bc li:hover {
+    background-color: blueviolet;
+    border-bottom: 1px solid white;
+}
+
+li:hover > .hover-menu {
+    display: inline-block;
+    z-index: 1;
+}
+
