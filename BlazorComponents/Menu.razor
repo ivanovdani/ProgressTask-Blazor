@@ -1,8 +1,8 @@
 ﻿
 <ol class="bc root-menu">
-    @foreach (IMenuItem i in Items)
+    @for (int i = 0; i < Items.Count; i++)
     {
-        <MenuItem Model="@i" CustomCallback="@CustomCallback"></MenuItem>
+        <MenuItem Model="@Items.ElementAt(i)" Bullet="@($"{i+1}")" CustomCallback="@CustomCallback"></MenuItem>
     }
 </ol>
 

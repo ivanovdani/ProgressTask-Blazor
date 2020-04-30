@@ -1,10 +1,10 @@
 ﻿
 <li @onclick="ItemClicked" @onclick:stopPropagation="true">
-    <a>@Model.Text</a>
+    <a>@Model.Text @Bullet</a>
     <ol class="bc hover-menu">
-        @foreach (IMenuItem i in Model.Children)
+        @for(int i = 0; i < Model.Children.Count; i++)
         {
-            <MenuItem Model="@i" CustomCallback="@CustomCallback"></MenuItem>
+            <MenuItem Model="@Model.Children.ElementAt(i)" Bullet="@GetChildBullet(i)" CustomCallback="@CustomCallback"></MenuItem>
         }
     </ol>
 </li>
@@ -15,6 +15,14 @@
 
     [Parameter]
     public EventCallback<IMenuItem> CustomCallback { get; set; }
+
+    [Parameter]
+    public string Bullet { get; set; }
+
+    private string GetChildBullet(int index)
+    {
+        return $"{Bullet}.{index+1}";
+    }
 
     private void ItemClicked()
     {

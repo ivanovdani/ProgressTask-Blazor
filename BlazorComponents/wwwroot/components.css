@@ -6,10 +6,10 @@ ol.bc {
     counter-reset: item;
 }
 
-ol.bc li:before {
+/*ol.bc li:before {
     content: counters(item, ".") " ";
     counter-increment: item
-}
+}*/
 
 .bc li {
     min-width: 100px;
